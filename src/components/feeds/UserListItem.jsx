@@ -18,15 +18,5 @@ const UserListItem = () => {
             </Card>
         </Link>
     )
-    // return (
-    //     <Space size={10} style={}>
-    //         <Avatar size={33} style={{ fontSize: 18 }}>A</Avatar>
-    //         <div>
-    //             <Title level={5} style={{ fontSize: 15, padding: 0, margin: 0 }}>
-    //                 <Link to='/'>Dillip</Link>
-    //             </Title>
-    //         </div>
-    //     </Space>
-    // )
 }
 export default UserListItem;

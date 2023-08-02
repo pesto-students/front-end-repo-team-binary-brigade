@@ -9,6 +9,8 @@ import { persistStore } from "redux-persist";
 
 import PageLoader from "./components/common/PageLoader";
 import BaseLayout from "./components/Layout/BaseLayout";
+// import CollegeLists from "./pages/CollegeLists";
+// import CollegeDetails from "./pages/CollegeDetails";
 
 // import page components
 const PageNotFound = lazy(() => import("./pages/404"));
@@ -18,6 +20,10 @@ const OtpVerify = lazy(() => import("./pages/OtpVerify"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
 const UserPage = lazy(() => import("./pages/UserPage"));
+const CollegeDetails = lazy(() => import("./pages/CollegeDetails"))
+const CollegeLists = lazy(() => import("./pages/CollegeLists"));
+
+
 
 // redux persist
 const persistor = persistStore(store);
@@ -50,6 +56,18 @@ function App() {
       component: <UserPage />,
       authentication: true,
       page_title:"Feeds"
+    },
+    {
+      path: "/collegedetails",
+      component: <CollegeDetails/>,
+      authentication: true,
+      page_title:"college Details"
+    },
+    {
+      path: "/collegelists",
+      component: <CollegeLists/>,
+      authentication: true,
+      page_title:"college Lists"
     },
     // 404 not found page
     {
