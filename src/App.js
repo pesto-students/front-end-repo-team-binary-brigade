@@ -20,10 +20,8 @@ const OtpVerify = lazy(() => import("./pages/OtpVerify"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
 const UserPage = lazy(() => import("./pages/UserPage"));
-const CollegeDetails = lazy(() => import("./pages/CollegeDetails"))
+const CollegeDetails = lazy(() => import("./pages/CollegeDetails"));
 const CollegeLists = lazy(() => import("./pages/CollegeLists"));
-
-
 
 // redux persist
 const persistor = persistStore(store);
@@ -55,19 +53,19 @@ function App() {
       path: "/",
       component: <UserPage />,
       authentication: true,
-      page_title:"Feeds"
+      page_title: "Feeds",
     },
     {
-      path: "/collegedetails",
-      component: <CollegeDetails/>,
+      path: "/college/:id",
+      component: <CollegeDetails />,
       authentication: true,
-      page_title:"college Details"
+      page_title: "college Details",
     },
     {
-      path: "/collegelists",
-      component: <CollegeLists/>,
+      path: "/colleges",
+      component: <CollegeLists />,
       authentication: true,
-      page_title:"college Lists"
+      page_title: "college Lists",
     },
     // 404 not found page
     {

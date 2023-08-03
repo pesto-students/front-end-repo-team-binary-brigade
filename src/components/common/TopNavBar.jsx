@@ -104,7 +104,7 @@ const TopNavBar = () => {
                         <Button type='ghost' shape="circle" icon={<SearchIcon />} size='middle' />
                     </Link>
                 }
-                <Link to='/' style={{ display: 'flex', alignItems: 'center' }}>
+                <Link to='/colleges' style={{ display: 'flex', alignItems: 'center' }}>
                     <Button type='ghost' shape="circle" icon={<SchoolIcon />} size='middle' />
                 </Link>
                 <Link to='/' style={{ display: 'flex', alignItems: 'center' }}>
