@@ -1,17 +1,24 @@
 import { useEffect, useState } from "react";
 import DesktopMainLayout from "../components/Layout/DesktopMainLayout";
-// import PostCard from "../components/feeds/PostCard";
-import PostCardLoader from "../components/feeds/PostCardLoader";
-import PostFilter from "../components/feeds/PostFilter";
 import React from "react";
-import { Card, Carousel } from "antd";
-import styled from "styled-components";
+import { Card, Descriptions } from "antd";
+import { styled } from "styled-components";
+import CollegeDetailsLoader from "../components/Loaders/CollegeDetailsLoader";
 
-const MainDiv = styled.div`
+const CollegeDetails = () => {
+  const [loader, setLoader] = useState(true);
+  const MainDiv = styled.div`
   margin: 0 20px;
   h1 {
     color: #6c63ff;
-    font-size: 25px;
+    padding:0;
+    margin:0;
+  }
+  p {
+    padding:0;
+    margin:0;
+    text-align: justify;
+    margin-top: 15px;
   }
   img {
     max-width: 100%;
@@ -19,71 +26,54 @@ const MainDiv = styled.div`
   }
 `;
 
-const CollegeDetails = () => {
-  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
       setLoader(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
+  const items = Array(10).fill({
+    avatar: "https://xsgames.co/randomusers/avatar.php?g=pixel&key=1",
+    name: "Dillip Kumar Sahu",
+    date: "23/04/2019"
+  });
+
+
   return (
-    <DesktopMainLayout>
-      {/* <PostFilter /> */}
+    <DesktopMainLayout rightSideListData={items} rightSideListTitle="Other colleges" >
+      <div style={{ margin: '20px 0' }} />
       {loader ? (
-        <>
-          <PostCardLoader />
-          <PostCardLoader />
-        </>
+        <CollegeDetailsLoader />
       ) : (
-        <>
-          <MainDiv>
-            <Card
-              hoverable
-              style={{
-                width: "100%",
-              }}
+        <MainDiv>
+          <Card
+            cover={
+              <img
+                alt="example"
+                src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29sbGVnZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+              />
+            }
+          >
+            <h1>Indian Institute of Technology Bombay (IIT Bombay)</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem
+              itaque repudiandae officia obcaecati beatae inventore, explicabo
+              modi velit odit, laudantium, sit ut. Soluta minima dignissimos
+              nobis cupiditate beatae iste praesentium!
+            </p>
+            <Descriptions
+              size='small'
+              layout='vertical'
+              style={{ marginTop: 20 }}
+              labelStyle={{ color: '#000', fontWeight: 'bold' }}
             >
-              <Carousel autoplay>
-                <div>
-                  <img
-                    src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29sbGVnZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
-                    alt="college"
-                  />
-                </div>
-                <div>
-                  <img
-                    src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29sbGVnZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
-                    alt="college"
-                  />
-                </div>
-                <div>
-                  <img
-                    src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29sbGVnZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
-                    alt="college"
-                  />
-                </div>
-              </Carousel>
-              <h1>Indian Institute of Technology Bombay (IIT Bombay)</h1>
-              <h3>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem
-                itaque repudiandae officia obcaecati beatae inventore, explicabo
-                modi velit odit, laudantium, sit ut. Soluta minima dignissimos
-                nobis cupiditate beatae iste praesentium!
-              </h3>
-              <h2>
-                Number Of Student - <span>3000</span>
-              </h2>
-              <h2>
-                Number Of Faculty - <span>80</span>
-              </h2>
-              <h2>
-                Number Of Stream - <span>20</span>
-              </h2>
-            </Card>
-          </MainDiv>
-        </>
+              <Descriptions.Item label="Number Of Student">5000</Descriptions.Item>
+              <Descriptions.Item label="Number Of Faculty">200</Descriptions.Item>
+              <Descriptions.Item label="Number Of Stream">12</Descriptions.Item>
+            </Descriptions>
+          </Card>
+        </MainDiv>
       )}
     </DesktopMainLayout>
   );

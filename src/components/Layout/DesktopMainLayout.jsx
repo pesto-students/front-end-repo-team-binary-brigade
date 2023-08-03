@@ -1,11 +1,11 @@
 import { Col, Grid, Row } from "antd";
-import UserList from "../feeds/UserList";
+import ListSection from "../common/ListSection";
 import UserProfileCard from "../common/UserProfileCard";
 import CreatePostButtonCard from "../common/CreatePostButtonCard";
 
 const { useBreakpoint } = Grid;
 
-const DesktopMainLayout = ({ children, sidelayout = true }) => {
+const DesktopMainLayout = ({ children, sidelayout = true, rightSideListData, rightSideListTitle }) => {
     const screens = useBreakpoint();
 
     return (
@@ -23,7 +23,7 @@ const DesktopMainLayout = ({ children, sidelayout = true }) => {
             {
                 (sidelayout && screens.md) &&
                 <Col md={6} xs={24} style={{ height: '100%', overflow: 'auto' }}>
-                    <UserList />
+                    <ListSection list={rightSideListData} title={rightSideListTitle} />
                 </Col>
             }
         </Row>

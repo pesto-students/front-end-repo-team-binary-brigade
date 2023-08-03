@@ -1,7 +1,7 @@
 
-import { Avatar, Card, Skeleton, Space, Tooltip, Typography } from 'antd';
+import { Card, Skeleton, Space } from 'antd';
 
-const PostCardLoader = ({ like = false }) => {
+const PostCardLoader = () => {
 
     return (
         <Card
