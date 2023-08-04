@@ -53,19 +53,19 @@ function App() {
       path: "/",
       component: <UserPage />,
       authentication: true,
-      page_title: "Feeds",
+      page_title: "Feed",
     },
     {
       path: "/college/:id",
       component: <CollegeDetails />,
       authentication: true,
-      page_title: "college Details",
+      page_title: "College Detail",
     },
     {
       path: "/colleges",
       component: <CollegeLists />,
       authentication: true,
-      page_title: "college Lists",
+      page_title: "Colleges",
     },
     // 404 not found page
     {
