@@ -16,7 +16,7 @@ const UserProfileCard = () => {
                     src="https://xsgames.co/randomusers/avatar.phpl?g=pixel&key=100"
                     size={70} style={{ fontSize: 40, marginBottom: 10 }}
                 >
-                    D
+                    
                 </Avatar>
                 <Title level={4} style={{ padding: 0, margin: 0 }}>Dillip Kumar Sahu</Title>
                 <Text>dillipkumar@gmail.com</Text>
