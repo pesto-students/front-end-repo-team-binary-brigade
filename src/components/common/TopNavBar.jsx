@@ -8,6 +8,7 @@ import { primaryColor } from "../../app/config/theme";
 import SchoolIcon from '@mui/icons-material/School';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SearchIcon from '@mui/icons-material/Search';
+import logo from "./imgs/short-logo.svg"
 
 const { useBreakpoint } = Grid;
 
@@ -83,7 +84,7 @@ const TopNavBar = () => {
                     display: 'flex',
                     alignItems: 'center'
                 }}>
-                <img src="./images/short-logo.svg" alt="logo" width={60} />
+                <img src={logo} alt="logo" width={60} />
             </Link>
             {
                 screens.md
@@ -104,7 +105,7 @@ const TopNavBar = () => {
                         <Button type='ghost' shape="circle" icon={<SearchIcon />} size='middle' />
                     </Link>
                 }
-                <Link to='/' style={{ display: 'flex', alignItems: 'center' }}>
+                <Link to='/colleges' style={{ display: 'flex', alignItems: 'center' }}>
                     <Button type='ghost' shape="circle" icon={<SchoolIcon />} size='middle' />
                 </Link>
                 <Link to='/' style={{ display: 'flex', alignItems: 'center' }}>

@@ -3,7 +3,7 @@ import { Button, Space } from 'antd';
 
 const fltrBtns = [
     {
-        label: 'All',
+        label: 'Recent',
         value: 1
     },
     {
@@ -11,16 +11,12 @@ const fltrBtns = [
         value: 2
     },
     {
-        label: 'Recent',
+        label: 'My Post',
         value: 3
     },
     {
-        label: 'My Post',
-        value: 4
-    },
-    {
         label: 'Saved',
-        value: 5
+        value: 4
     }
 ]
 
