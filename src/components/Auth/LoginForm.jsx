@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Checkbox } from 'antd';
+import { Form, Checkbox, message } from 'antd';
 import { EmailInput, PasswordInput } from '../common/FormElement/FormInput';
 import FormButton from '../common/FormElement/FormButton';
 import { LinkButton } from '../common/Elements';
+import { useDispatch, useSelector } from 'react-redux';
+import { authenticateReduxService } from '../../app/redux/slices/authReducer';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { data, loading, error } = useSelector(state => state.authReducer);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberPassword, setRememberPassword] = useState(false);
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const storedEmail = localStorage.getItem('loginEmail');
@@ -19,8 +24,7 @@ const LoginForm = () => {
         }
     }, []);
 
-    const onFinish = (values) => {
-        setLoading(true);
+    const onFinish = async (values) => {
         if (rememberPassword) {
             localStorage.setItem('loginEmail', values.email);
             localStorage.setItem('loginPassword', values.password);
@@ -28,8 +32,24 @@ const LoginForm = () => {
             localStorage.removeItem('loginEmail');
             localStorage.removeItem('loginPassword');
         }
+
+        await dispatch(authenticateReduxService({
+            email: values.email,
+            password: values.email
+        }))
     };
 
+
+    useEffect(() => {
+        if (data) {
+            navigate(`/feed?college_id=${data.user.college_id}`);
+        }
+        else {
+            message.error(error.toString());
+        }
+
+        return () => { };
+    }, [error, data, navigate])
 
 
 
