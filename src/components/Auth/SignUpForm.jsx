@@ -5,8 +5,30 @@ import { useNavigate } from "react-router-dom";
 import FormButton from "../common/FormElement/FormButton";
 import { LinkButton } from "../common/Elements";
 import FormField from "../common/FormElement/FormField";
+import { CreateUserService } from "../../app/services/user.service";
+
+const colleges = [
+  { _id: '615aeb50c45d1909c8e63b26', college_name: 'Indian Institute of Technology Bombay' },
+  { _id: '615aeb50c45d1909c8e63b27', college_name: 'Indian Institute of Technology Delhi' },
+  { _id: '615aeb50c45d1909c8e63b28', college_name: 'Indian Institute of Technology Madras' },
+  { _id: '615aeb50c45d1909c8e63b29', college_name: 'Indian Institute of Technology Kanpur' },
+  { _id: '615aeb50c45d1909c8e63b2a', college_name: 'Indian Institute of Technology Kharagpur' },
+  { _id: '615aeb50c45d1909c8e63b2b', college_name: 'Indian Institute of Science Bangalore' },
+  { _id: '615aeb50c45d1909c8e63b2c', college_name: 'Indian Institute of Technology Roorkee' },
+  { _id: '615aeb50c45d1909c8e63b2d', college_name: 'Indian Institute of Technology Guwahati' },
+  { _id: '615aeb50c45d1909c8e63b2e', college_name: 'Jawaharlal Nehru University' },
+  { _id: '615aeb50c45d1909c8e63b2f', college_name: 'Banaras Hindu University' },
+];
+
 
 const fields = [
+  {
+    name: 'college_id',
+    placeholder: 'Select College',
+    rules: [{ required: true, message: 'Please your college!' }],
+    type: "select",
+    options: colleges
+  },
   {
     name: 'name',
     placeholder: 'Name',
@@ -19,12 +41,6 @@ const fields = [
       { required: true, message: 'Please enter your email!' },
       { type: 'email', message: 'Please enter a valid email address!' },
     ]
-  },
-  {
-    name: 'phone',
-    placeholder: 'Phone Number',
-    rules: [{ required: true, message: 'Please enter your phone number!' }],
-    type: 'number'
   },
   {
     name: 'password',
@@ -55,14 +71,26 @@ const SignUpForm = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     setLoading(true);
-    console.log("Received values:", values);
     if (values.password !== values.repeatPassword) {
       message.error("The password and repeat password do not match!");
       return;
     }
-    // Proceed with sign in logic
+
+    await CreateUserService({
+      email: values.email,
+      name: values.name,
+      password: values.password,
+      college_id: values.college_id
+    }).then(() => {
+      message.success('Account created successfully!')
+      navigate('/otpverify');
+    }).catch((err) => {
+      message.error(err ? err?.toString() : 'Somthing went wrong!');
+    }).finally(() => {
+      setLoading(false);
+    })
   };
 
   return (
@@ -71,10 +99,12 @@ const SignUpForm = () => {
         {
           fields.map((field, i) => (
             <FormField
+              key={i}
               name={field.name}
               rules={field.rules}
               placeholder={field.placeholder}
               type={field.type}
+              options={field?.options?.map(college => ({ value: college._id, label: college.college_name }))}
             />
           ))
         }

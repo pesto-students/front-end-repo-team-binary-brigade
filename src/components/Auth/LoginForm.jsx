@@ -45,7 +45,7 @@ const LoginForm = () => {
             navigate(`/feed?college_id=${data.user.college_id}`);
         }
         else {
-            message.error(error.toString());
+            message.error(error ? error?.toString() : 'Somthing went wrong!');
         }
 
         return () => { };
