@@ -27,21 +27,17 @@ const authSlice = createSlice({
 const { setLoading, setData, setError } = authSlice.actions;
 export default authSlice.reducer;
 
-export const authenticateReduxService =
-  (email, password) => async (dispatch) => {
-    dispatch(setLoading(true));
-    try {
-      const { data } = AuthenticateService({
-        email,
-        password,
-      });
-      dispatch(setLoading(false));
-      dispatch(setData(data));
-    } catch (error) {
-      dispatch(setLoading(false));
-      dispatch(setError(error));
-    }
-  };
+export const authenticateReduxService = (body) => async (dispatch) => {
+  dispatch(setLoading(true));
+  try {
+    const { data } = AuthenticateService(body);
+    dispatch(setLoading(false));
+    dispatch(setData(data));
+  } catch (error) {
+    dispatch(setLoading(false));
+    dispatch(setError(error));
+  }
+};
 
 export const unAuthenticateReduxService = () => async (dispatch) => {
   dispatch(setData(null));
