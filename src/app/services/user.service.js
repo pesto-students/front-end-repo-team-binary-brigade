@@ -1,4 +1,5 @@
-import JsonToQueryConverter from "../../helper/jsonToQueryConverter";
+
+import JsonToQueryConverter from "../../helper/JsonToQueryConverter";
 import { authApiService,apiService } from "../config/api";
 
 export const CreateUserService = (payload) => apiService.post(`/user`, payload);

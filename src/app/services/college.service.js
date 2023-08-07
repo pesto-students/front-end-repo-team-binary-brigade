@@ -1,4 +1,4 @@
-import JsonToQueryConverter from "../../helper/jsonToQueryConverter";
+import JsonToQueryConverter from "../../helper/JsonToQueryConverter";
 import { authApiService } from "../config/api";
 
 export const CreateCollegeService = (payload) => authApiService.post(`/college`, payload);
