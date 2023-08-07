@@ -50,7 +50,7 @@ function App() {
     },
     // add authenticated page route
     {
-      path: "/",
+      path: "/feed",
       component: <UserPage />,
       authentication: true,
       page_title: "Feed",
