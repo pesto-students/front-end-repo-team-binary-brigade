@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
-
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import OTPInput from "otp-input-react";
 import { Form, message } from 'antd';
 import FormButton from '../common/FormElement/FormButton';
 import { VerifyOtpService } from '../../app/services/user.service';
+import { errorHandler } from '../../helper/handler';
 
 const OtpForm = () => {
   const navigate = useNavigate();
@@ -14,8 +14,6 @@ const OtpForm = () => {
 
   const onFinish = async (values) => {
     setLoading(true);
-    console.log('Combined OTP:', otp);
-
     await VerifyOtpService({
       otp
     }).then(async (res) => {
@@ -28,7 +26,7 @@ const OtpForm = () => {
         navigate("/resetPassword");
       }
     }).catch((err) => {
-      message.error(err ? err?.toString() : 'Somthing went wrong!');
+      message.error(errorHandler(err));
     }).finally(() => {
       setLoading(false);
     })

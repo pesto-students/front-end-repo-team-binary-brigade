@@ -6,6 +6,7 @@ import { LinkButton } from '../common/Elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { authenticateReduxService } from '../../app/redux/slices/authReducer';
 import { useNavigate } from 'react-router-dom';
+import { errorHandler } from '../../helper/handler';
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -45,7 +46,7 @@ const LoginForm = () => {
             navigate(`/feed?college_id=${data.user.college_id}`);
         }
         else {
-            message.error(error ? error?.toString() : 'Somthing went wrong!');
+            message.error(errorHandler(error));
         }
 
         return () => { };

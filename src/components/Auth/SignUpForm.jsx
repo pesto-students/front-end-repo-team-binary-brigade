@@ -6,6 +6,7 @@ import FormButton from "../common/FormElement/FormButton";
 import { LinkButton } from "../common/Elements";
 import FormField from "../common/FormElement/FormField";
 import { CreateUserService } from "../../app/services/user.service";
+import { errorHandler } from "../../helper/handler";
 
 const colleges = [
   { _id: '615aeb50c45d1909c8e63b26', college_name: 'Indian Institute of Technology Bombay' },
@@ -88,7 +89,7 @@ const SignUpForm = () => {
       sessionStorage.setItem('otpType', 'createAccount');
       navigate('/otpverify');
     }).catch((err) => {
-      message.error(err ? err?.toString() : 'Somthing went wrong!');
+      message.error(errorHandler(err));
     }).finally(() => {
       setLoading(false);
     })
