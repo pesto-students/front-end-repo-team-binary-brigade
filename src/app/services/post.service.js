@@ -1,17 +1,17 @@
 import JsonToQueryConverter from "../../helper/jsonToQueryConverter";
-import apiService from "../config/api";
+import { authApiService } from "../config/api";
 
-export const CreatePostService = (payload) => apiService.post(`/post`, payload);
-export const GetPostService = (query) => apiService.get(`/post?${JsonToQueryConverter(query)}`);
-export const GetPostDetailsService = (id) => apiService.get(`/post/${id}`);
+export const CreatePostService = (payload) => authApiService.post(`/post`, payload);
+export const GetPostService = (query) => authApiService.get(`/post?${JsonToQueryConverter(query)}`);
+export const GetPostDetailsService = (id) => authApiService.get(`/post/${id}`);
 
-export const SavePostService = (payload) => apiService.post(`/saved-post`, payload);
-export const ReportPostService = (payload) => apiService.post(`/report-post`, payload);
-export const LikePostService = (payload) => apiService.post(`/post-like`, payload);
-export const CommentPostService = (payload) => apiService.post(`/post-comment`, payload);
+export const SavePostService = (payload) => authApiService.post(`/saved-post`, payload);
+export const ReportPostService = (payload) => authApiService.post(`/report-post`, payload);
+export const LikePostService = (payload) => authApiService.post(`/post-like`, payload);
+export const CommentPostService = (payload) => authApiService.post(`/post-comment`, payload);
 
-export const GetCommentService = (query) => apiService.get(`/post-comment?${JsonToQueryConverter(query)}`);
-export const GetLikeService = (query) => apiService.get(`/post-like?${JsonToQueryConverter(query)}`);
-export const GetSavedPostService = (query) => apiService.get(`/saved-post?${JsonToQueryConverter(query)}`);
+export const GetCommentService = (query) => authApiService.get(`/post-comment?${JsonToQueryConverter(query)}`);
+export const GetLikeService = (query) => authApiService.get(`/post-like?${JsonToQueryConverter(query)}`);
+export const GetSavedPostService = (query) => authApiService.get(`/saved-post?${JsonToQueryConverter(query)}`);
 
-export const RemoveSavedPostService = (id) => apiService.delete(`/saved-post/${id}`);
+export const RemoveSavedPostService = (id) => authApiService.delete(`/saved-post/${id}`);

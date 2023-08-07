@@ -1,3 +1,3 @@
-import apiService from "../config/api";
+import { authApiService } from "../config/api";
 
-export const UploadFileService = (payload) => apiService.post(`/upload`, payload);
+export const UploadFileService = (payload) => authApiService.post(`/upload`, payload);
