@@ -5,17 +5,35 @@ import { useNavigate } from "react-router-dom";
 import OTPInput from "otp-input-react";
 import { Form, message } from 'antd';
 import FormButton from '../common/FormElement/FormButton';
+import { VerifyOtpService } from '../../app/services/user.service';
 
 const OtpForm = () => {
   const navigate = useNavigate();
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     setLoading(true);
     console.log('Combined OTP:', otp);
-    // navigate("/resetPassword")
+
+    await VerifyOtpService({
+      otp
+    }).then(async (res) => {
+      message.success(res.data.message);
+      // check otp verification type
+      if (sessionStorage.getItem('otpType') === 'createAccount') {
+        navigate("/login");
+      }
+      else {
+        navigate("/resetPassword");
+      }
+    }).catch((err) => {
+      message.error(err ? err?.toString() : 'Somthing went wrong!');
+    }).finally(() => {
+      setLoading(false);
+    })
   };
+
 
   return (
     <Form name="otp-form" onFinish={onFinish}>

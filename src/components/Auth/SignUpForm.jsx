@@ -85,6 +85,7 @@ const SignUpForm = () => {
       college_id: values.college_id
     }).then(() => {
       message.success('Account created successfully!')
+      sessionStorage.setItem('otpType', 'createAccount');
       navigate('/otpverify');
     }).catch((err) => {
       message.error(err ? err?.toString() : 'Somthing went wrong!');
