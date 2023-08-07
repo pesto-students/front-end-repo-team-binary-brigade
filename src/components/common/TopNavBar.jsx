@@ -2,7 +2,7 @@
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Button, Dropdown, Grid, Input, Space, message } from "antd";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { unAuthenticateReduxService } from "../../app/redux/slices/authReducer";
 import { primaryColor } from "../../app/config/theme";
 import SchoolIcon from '@mui/icons-material/School';
@@ -41,6 +41,7 @@ const itemsDesk = [
 ];
 
 const TopNavBar = () => {
+    const { data } = useSelector(state => state.authReducer);
     const dispatch = useDispatch();
     const screens = useBreakpoint();
     const [messageApi, contextHolder] = message.useMessage();
@@ -79,7 +80,7 @@ const TopNavBar = () => {
             alignItems: 'center'
         }}>
             {contextHolder}
-            <Link to={'/'}
+            <Link to={`/feed?college_id=${data?.user.college_id}`}
                 style={{
                     display: 'flex',
                     alignItems: 'center'
@@ -101,7 +102,7 @@ const TopNavBar = () => {
             <Space size={screens.md ? 20 : 10} style={{ color: '#000' }}>
                 {
                     !screens.md &&
-                    <Link to='/' style={{ display: 'flex', alignItems: 'center' }}>
+                    <Link to='/search' style={{ display: 'flex', alignItems: 'center' }}>
                         <Button type='ghost' shape="circle" icon={<SearchIcon />} size='middle' />
                     </Link>
                 }
