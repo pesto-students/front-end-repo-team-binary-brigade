@@ -21,7 +21,7 @@ export const EmailInput = ({ email = '' }) => {
 }
 
 
-export const PasswordInput = ({ placeholder = 'Password', name = 'password' }) => {
+export const PasswordInput = ({ placeholder = 'Password', name = 'password', password = '' }) => {
     return (
         <Form.Item
             name={name}
@@ -32,6 +32,7 @@ export const PasswordInput = ({ placeholder = 'Password', name = 'password' }) =
             <Input.Password
                 prefix={<LockOutlined />}
                 placeholder={placeholder}
+                initialValues={password}
                 size='large'
             />
         </Form.Item>
