@@ -1,12 +1,22 @@
 import { useEffect, useState } from "react";
 import DesktopMainLayout from "../components/Layout/DesktopMainLayout";
 import React from "react";
-import { Card, Descriptions } from "antd";
+import { Card, Descriptions, message } from "antd";
 import { styled } from "styled-components";
 import CollegeDetailsLoader from "../components/Loaders/CollegeDetailsLoader";
+import { getCollegeReduxService } from "../app/redux/slices/collegeReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { GetCollegeDetailsService } from "../app/services/college.service";
+import { useParams } from "react-router-dom";
+import { errorHandler } from "../helper/handler";
 
 const CollegeDetails = () => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const { data, loading } = useSelector(state => state.collegeReducer)
+  const [details, setDetails] = useState(null);
   const [loader, setLoader] = useState(true);
+
   const MainDiv = styled.div`
   margin: 0 20px;
   h1 {
@@ -28,10 +38,22 @@ const CollegeDetails = () => {
 
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoader(false);
-    }, 1000);
+    dispatch(getCollegeReduxService({
+      skip: 0,
+      limit: 10,
+    }));
+    // getCollegeDetail();
   }, []);
+
+  const getCollegeDetail = async () => {
+    await GetCollegeDetailsService(id).then((res) => {
+      setDetails(res.data);
+    }).catch((err) => {
+      message.error(errorHandler(err));
+    }).finally(() => {
+      setLoader(false);
+    })
+  }
 
   const items = Array(10).fill({
     avatar: "https://xsgames.co/randomusers/avatar.php?g=pixel&key=1",
@@ -40,8 +62,9 @@ const CollegeDetails = () => {
   });
 
 
+
   return (
-    <DesktopMainLayout rightSideListData={items} rightSideListTitle="Other colleges" >
+    <DesktopMainLayout rightSideListData={data} loading={loading} rightSideListTitle="Other colleges" >
       <div style={{ margin: '20px 0' }} />
       {loader ? (
         <CollegeDetailsLoader />

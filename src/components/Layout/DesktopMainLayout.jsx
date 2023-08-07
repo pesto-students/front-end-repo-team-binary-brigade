@@ -5,7 +5,7 @@ import CreatePostButtonCard from "../common/CreatePostButtonCard";
 
 const { useBreakpoint } = Grid;
 
-const DesktopMainLayout = ({ children, sidelayout = true, rightSideListData, rightSideListTitle }) => {
+const DesktopMainLayout = ({ children, sidelayout = true, rightSideListData, rightSideListTitle, loading }) => {
     const screens = useBreakpoint();
 
     return (
@@ -23,7 +23,7 @@ const DesktopMainLayout = ({ children, sidelayout = true, rightSideListData, rig
             {
                 (sidelayout && screens.md) &&
                 <Col md={6} xs={24} style={{ height: '100%', overflow: 'auto' }}>
-                    <ListSection list={rightSideListData} title={rightSideListTitle} />
+                    <ListSection list={rightSideListData} title={rightSideListTitle} loading={loading} />
                 </Col>
             }
         </Row>
