@@ -209,30 +209,50 @@ const PostCard = ({ like = false }) => {
           open={isModalLikeOpen}
           onOk={handleOk}
           onCancel={handleCancel}
+          okButtonProps={{ style: { display: 'none' } }}
+          cancelButtonProps={{ style: { display: 'none' } }}
+          width={300}
+          centered 
         >
-          <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-            <div className="avatar">
+          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+            <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
               <AccountCircleIcon
-                style={{ fontSize: 40, color: primaryColor }}
+                style={{ fontSize: 30, color: "#000" }}
               />
             </div>
-            <div style={{ fontSize: 20, color: primaryColor }}>Bulu Sahoo</div>
+            <div style={{ fontSize: 16, color: "#000" }}>Bulu Sahoo</div>
           </div>
-          <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-            <div className="avatar">
+          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+            <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
               <AccountCircleIcon
-                style={{ fontSize: 40, color: primaryColor }}
+                style={{ fontSize: 30, color: "#000" }}
               />
             </div>
-            <div style={{ fontSize: 20, color: primaryColor }}>Bulu Sahoo</div>
+            <div style={{ fontSize: 16, color: "#000" }}>Bulu Sahoo</div>
           </div>
-          <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-            <div className="avatar">
+          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+            <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
               <AccountCircleIcon
-                style={{ fontSize: 40, color: primaryColor }}
+                style={{ fontSize: 30, color: "#000" }}
               />
             </div>
-            <div style={{ fontSize: 20, color: primaryColor }}>Bulu Sahoo</div>
+            <div style={{ fontSize: 16, color: "#000" }}>Bulu Sahoo</div>
+          </div>
+          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+            <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+              <AccountCircleIcon
+                style={{ fontSize: 30, color: "#000" }}
+              />
+            </div>
+            <div style={{ fontSize: 16, color: "#000" }}>Bulu Sahoo</div>
+          </div>
+          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+            <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+              <AccountCircleIcon
+                style={{ fontSize: 30, color: "#000" }}
+              />
+            </div>
+            <div style={{ fontSize: 16, color: "#000" }}>Bulu Sahoo</div>
           </div>
         </Modal>
       </MODAL>
@@ -242,65 +262,69 @@ const PostCard = ({ like = false }) => {
           open={modalCommentOpen}
           onOk={handleOk}
           onCancel={handleCancel}
+          okButtonProps={{ style: { display: 'none' } }}
+          cancelButtonProps={{ style: { display: 'none' } }}
+          width={300}
+          centered 
         >
           <div
             style={{
               display: "flex",
-              gap: "10px",
+              gap: "8px",
               alignItems: "center",
-              marginTop: "20px",
+              marginTop: "0",
             }}
           >
             <div className="avatar">
               <AccountCircleIcon
-                style={{ fontSize: 40, color: primaryColor }}
+                style={{ fontSize: 35, color: "#000", display:"flex", alignItems:"center", justifyContent:"center" }}
               />
             </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <p style={{ fontSize: 15, color: primaryColor, margin: 0 }}>
+            <div style={{ display: "flex", flexDirection: "column", backgroundColor:"#e0dada", padding:"4px 8px", borderRadius:"10px" }}>
+              <p style={{ fontSize: 16, color: "#000", margin: 0 }}>
                 Bulu Sahoo
               </p>
-              <p style={{ fontSize: 15, margin: 0 }}>show comment here</p>
+              <p style={{ fontSize: 14, margin:0 }}>show comment here</p>
             </div>
           </div>
           <div
             style={{
               display: "flex",
-              gap: "10px",
+              gap: "8px",
               alignItems: "center",
-              marginTop: "20px",
+              marginTop: "10px",
             }}
           >
             <div className="avatar">
               <AccountCircleIcon
-                style={{ fontSize: 40, color: primaryColor }}
+                style={{ fontSize: 35, color: "#000", display:"flex", alignItems:"center", justifyContent:"center" }}
               />
             </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <p style={{ fontSize: 15, color: primaryColor, margin: 0 }}>
+            <div style={{ display: "flex", flexDirection: "column", backgroundColor:"#e0dada", padding:"4px 8px", borderRadius:"10px" }}>
+              <p style={{ fontSize: 16, color: "#000", margin: 0 }}>
                 Bulu Sahoo
               </p>
-              <p style={{ fontSize: 15, margin: 0 }}>show comment here</p>
+              <p style={{ fontSize: 14, margin:0 }}>show comment here</p>
             </div>
           </div>
           <div
             style={{
               display: "flex",
-              gap: "10px",
+              gap: "8px",
               alignItems: "center",
-              marginTop: "20px",
+              marginTop: "10px",
             }}
           >
             <div className="avatar">
               <AccountCircleIcon
-                style={{ fontSize: 40, color: primaryColor }}
+                style={{ fontSize: 35, color: "#000", display:"flex", alignItems:"center", justifyContent:"center" }}
               />
             </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <p style={{ fontSize: 15, color: primaryColor, margin: 0 }}>
+            <div style={{ display: "flex", flexDirection: "column", backgroundColor:"#e0dada", padding:"4px 8px", borderRadius:"10px" }}>
+              <p style={{ fontSize: 16, color: "#000", margin: 0 }}>
                 Bulu Sahoo
               </p>
-              <p style={{ fontSize: 15, margin: 0 }}>show comment here</p>
+              <p style={{ fontSize: 14, margin:0 }}>show comment here</p>
             </div>
           </div>
         </Modal>
@@ -311,6 +335,10 @@ const PostCard = ({ like = false }) => {
           open={shareModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}
+          okButtonProps={{ style: { display: 'none' } }}
+          cancelButtonProps={{ style: { display: 'none' } }}
+          width={400}
+          centered 
         >
           <div style={{ display: "flex", marginTop: "20px" }}>
             <input
@@ -324,8 +352,8 @@ const PostCard = ({ like = false }) => {
             </button>
           </div>
           <div style={{marginTop:"20px", display:"flex", gap:"20px"}}>
-            <EmailIcon  style={{color:primaryColor, fontSize: 50}}/>
-            <WhatsAppIcon  style={{color:primaryColor, fontSize: 50}}/>
+            <EmailIcon  style={{color:"#000", fontSize: 30}}/>
+            <WhatsAppIcon  style={{color:"#000", fontSize: 30}}/>
           </div>
         </Modal>
       </MODAL>

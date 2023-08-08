@@ -9,6 +9,7 @@ import { persistStore } from "redux-persist";
 
 import PageLoader from "./components/common/PageLoader";
 import BaseLayout from "./components/Layout/BaseLayout";
+// import Profile from "./pages/Profile";
 // import CollegeLists from "./pages/CollegeLists";
 // import CollegeDetails from "./pages/CollegeDetails";
 
@@ -22,6 +23,8 @@ const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
 const UserPage = lazy(() => import("./pages/UserPage"));
 const CollegeDetails = lazy(() => import("./pages/CollegeDetails"));
 const CollegeLists = lazy(() => import("./pages/CollegeLists"));
+const Profile = lazy(() => import("./pages/Profile"));
+
 
 // redux persist
 const persistor = persistStore(store);
@@ -64,6 +67,12 @@ function App() {
     {
       path: "/colleges",
       component: <CollegeLists />,
+      authentication: true,
+      page_title: "Colleges",
+    },
+    {
+      path: "/profile",
+      component: <Profile />,
       authentication: true,
       page_title: "Colleges",
     },

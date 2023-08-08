@@ -72,6 +72,7 @@ const CreatePostButtonCard = () => {
           open={upload}
           onOk={handleOk}
           onCancel={handleCancel}
+          okText="Post"
         >
           <div style={{ marginTop: "20px" }}>
             <TextArea
