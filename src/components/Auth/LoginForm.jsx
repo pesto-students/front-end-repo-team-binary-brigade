@@ -36,7 +36,7 @@ const LoginForm = () => {
 
         await dispatch(authenticateReduxService({
             email: values.email,
-            password: values.email
+            password: values.password
         }))
     };
 

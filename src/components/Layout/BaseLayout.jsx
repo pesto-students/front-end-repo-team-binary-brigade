@@ -18,7 +18,7 @@ const BaseLayout = ({ page_title, children }) => {
     const { token: { colorBgContainer } } = theme.useToken();
 
     useEffect(() => {
-        if (!isAuthenticate) {
+        if (isAuthenticate) {
             //    
         }
         else {
