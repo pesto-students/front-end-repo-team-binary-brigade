@@ -1,6 +1,5 @@
-
 import JsonToQueryConverter from "../../helper/JsonToQueryConverter";
-import { authApiService,apiService } from "../config/api";
+import { authApiService, apiService } from "../config/api";
 
 export const CreateUserService =async (payload) =>await apiService.post(`/user`, payload);
 export const UpdateUserService =async (id, payload) =>await authApiService.patch(`/user/${id}`, payload);
