@@ -19,11 +19,9 @@ const BaseLayout = ({ page_title, children }) => {
 
     useEffect(() => {
         if (!isAuthenticate) {
-            //    
+            navigate('/login')
         }
-        else {
-            navigate('/login');
-        }
+        
     }, [location.pathname]);
 
     return (

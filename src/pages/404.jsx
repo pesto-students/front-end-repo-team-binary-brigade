@@ -10,12 +10,11 @@ const PageNotFound = () => {
     const { data } = useSelector(state => state.authReducer);
 
     useEffect(() => {
-        const timeoutId = setTimeout(() => navigate(data ? `/feed?$${data.user.college_id}` : '/login'), 3000);
-
+        navigate(data ? `/feed?$${data.user.college_id}` : '/login')
         return () => {
-            clearTimeout(timeoutId);
+            
         };
-    }, [data, navigate])
+    }, [data])
 
     return (
         <>

@@ -30,7 +30,7 @@ export default authSlice.reducer;
 export const authenticateReduxService = (body) => async (dispatch) => {
   dispatch(setLoading(true));
   try {
-    const { data } = AuthenticateService(body);
+    const { data } = await AuthenticateService(body);
     dispatch(setLoading(false));
     dispatch(setData(data));
   } catch (error) {

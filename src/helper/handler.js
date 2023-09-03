@@ -1,1 +1,1 @@
-export const errorHandler = (err) => (err ? err?.toString() : "Somthing went wrong! try again.");
+export const errorHandler = (err) => (err.response.data.message ? err.response.data.message : "Somthing went wrong! try again.");
