@@ -33,7 +33,7 @@ export const authenticateReduxService = (body) => async (dispatch) => {
     const { data } = await AuthenticateService(body);
     dispatch(setLoading(false));
     dispatch(setData(data));
-  } catch (error) {
+      } catch (error) {
     dispatch(setLoading(false));
     dispatch(setError(error));
   }

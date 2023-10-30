@@ -87,7 +87,7 @@ const SignUpForm = () => {
     }).then(() => {
       message.success('Account created successfully!')
       sessionStorage.setItem('otpType', 'createAccount');
-      navigate('/otpverify');
+      navigate('/login');
     }).catch((err) => {
       message.error(errorHandler(err));
     }).finally(() => {
