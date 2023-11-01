@@ -10,7 +10,7 @@ const PageNotFound = () => {
     const { data } = useSelector(state => state.authReducer);
 
     useEffect(() => {
-        navigate(data ? `/feed?$${data.user.college_id}` : '/login')
+        navigate(data ? `/feed?${data.user.college_id}` : '/login')
         return () => {
             
         };
@@ -25,7 +25,7 @@ const PageNotFound = () => {
                 status="404"
                 title="404"
                 subTitle="Sorry, the page you visited does not exist."
-                extra={<Button type="primary" onClick={() => navigate(data ? `/feed?$${data.user.college_id}` : '/login')}>Back Home</Button>}
+                extra={<Button type="primary" onClick={() => navigate(data ? `/feed?${data.user.college_id}` : '/login')}>Back Home</Button>}
             />
         </>
     )
